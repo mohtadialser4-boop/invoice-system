@@ -41,7 +41,11 @@ app.post("/api/invoices", (req, res) => {
     }
   );
 });
-
+app.get("/api/check", (req, res) => {
+  db.all("SELECT * FROM invoices", [], (err, rows) => {
+    res.json(rows);
+  });
+});
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
